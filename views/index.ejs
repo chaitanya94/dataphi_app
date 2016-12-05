@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <title>Dataphi</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Delphi Patient Manager</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="/list">View Patients</a></li>
+	      <li><a href="/">Make an Entry</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<% if(errors.length > 0) {%>
+		<div class="row">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<ul class="alert alert-danger">
+			  		<% for(var i=0; i<errors.length; i++) {%>
+			  			<span><%= errors[i] %></span>
+			  			<% if(i != errors.length - 1) {%>
+			  				<br>
+			  			<% } %>
+			  		<% } %>
+			  	</ul>	
+			</div>
+		</div>
+	<% } %>
+
+  	<div class="row">
+  		<div class="col-sm-4"></div>
+  		<div class="col-sm-4">
+		  		<div class="span4">
+					<form action="/form" method="POST">
+						<div class="form-group">
+							<label for="first_name">First Name:</label>
+							<input type="text" class="form-inline" id="first_name">
+						</div>
+						<div class="form-group">
+							<label for="last_name">Last Name:</label>
+							<input type="text" class="form-inline" id="last_name">
+						</div>
+						<div class="form-group">
+							<label for="bday">Date of Birth:</label>
+							<input type="date" class="form-inline" id="bday">
+						</div>
+						<div class="form-group form-inline">
+							<label for="gender">Gender:</label>
+							<select name="gender">
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						<div class="form-group">
+						    <label for="usrtel">Telephone:</label>
+						    <input type="tel" class="form-inline" id="usrtel">
+						</div>
+						<div class="form-group">
+						    <label for="usrtel">Additional Comments:</label>
+						    <textarea class="form-control" id="comments"></textarea>
+						</div>
+						<button type="submit" class="btn btn-default">Submit</button>
+					</form>	
+		  		</div>  			
+  		</div>
+  		<div class="col-sm-4"></div>
+  	</div>
+
+
+
+
+</body>
+</html>

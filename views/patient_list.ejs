@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>Dataphi</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Delphi Patient Manager</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="/list">View Patients</a></li>
+	      <li><a href="/">Make an Entry</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+		  <form action="/search" method="POST">
+		  	<label for="patient_search">Search Patients:</label>
+		  	<input type="search" class="form-inline" name="patient_search">
+		  	<button type="submit" class="btn btn-default">Submit</button>
+		  </form>
+		</div>
+	</div>
+
+	<div class="row">
+			<ul class="patients list-group">
+			  <% for(var i=0; i<patients.length; i++) {%>
+			    <li class="patient list-group-item">
+			      <span><strong>First Name:</strong><%= patients[i].first_name %></span>
+			      <span><br><strong>Last Name:</strong><%= patients[i].last_name %></span>
+			      <span><br><strong>Date of Birth:</strong><%= patients[i].bday %></span>
+			      <span><br><strong>Gender:</strong><%= patients[i].gender %></span>
+			      <span><br><strong>Telephone Number:</strong><%= patients[i].usrtel %></span>
+			      <span><br><strong>Additional Comments:</strong><br><%= patients[i].comments %></span>
+			    </li>
+			  <% } %>
+			</ul>			
+	</div>
+
+</body>
+</html>
