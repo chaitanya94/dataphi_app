@@ -2,34 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- load MUI -->
+    <link href="//cdn.muicss.com/mui-0.9.6/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.9.6/js/mui.min.js"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style type="text/css">
+    	/**
+		 * Body CSS
+		 */
+		a {
+			color: black;
+		}
+
+		html,
+		body {
+		  height: 100%;
+		}
+
+		html,
+		body,
+		input,
+		textarea,
+		buttons {
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+		  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+		  background-color: #FFEBEE;
+		}
+
+
+		/**
+		 * Sidebar CSS
+		 */
+		#sidebar {
+		  background-color: #E57373;
+		  padding: 15px;
+		}
+
+		@media (min-width: 768px) {
+		  #sidebar {
+		    position: fixed;
+		    top: 0;
+		    bottom: 0;
+		    width: 180px;
+		    height: 100%;
+		    padding-top: 30px;
+		  }
+		}
+
+		/**
+		 * Content CSS
+		 */
+		@media (min-width: 768px) {
+		  #content {
+		    margin-left: 180px;
+		  }
+
+		  a:visited { text-decoration: none; }
+		  a:hover { text-decoration: none; }
+		  a:focus { text-decoration: none;}
+		  a:hover, a:active { text-decoration: none;}
+		}
+    </style>
 
   <title>Dataphi</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="/">Delphi Patient Manager</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li><a href="/list">View Patients</a></li>
-	      <li><a href="/">Make an Entry</a></li>
-	    </ul>
+	<div id="sidebar">
+	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
+	  	<a href="/">Add Patient</a>
+	  	<br>
+	  	<br>
 	  </div>
-	</nav>
+	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
+	  	<a href="/list">Patients' Roster</a>
+	  </div>
+	</div>
 
-	<% if(errors.length > 0) {%>
+	<div id="content" class="mui-container-fluid">
+	  <div class="mui-row">
+	  <div class="mui-col-sm-10 mui-col-sm-offset-1">
+	    <br>
+	    <% if(errors.length > 0) {%>
 		<div class="row">
-			<div class="col-sm-4"></div>
-			<div class="col-sm-4">
+		    <div class="mui--text-dark-secondary mui--text-body2">Error</div>
+		    <div class="mui-divider"></div>
+		    <br>
 				<ul class="alert alert-danger">
 			  		<% for(var i=0; i<errors.length; i++) {%>
 			  			<span><%= errors[i] %></span>
@@ -38,52 +97,48 @@
 			  			<% } %>
 			  		<% } %>
 			  	</ul>	
-			</div>
-		</div>
-	<% } %>
-
-  	<div class="row">
-  		<div class="col-sm-4"></div>
-  		<div class="col-sm-4">
-		  		<div class="span4">
-					<form action="/form" method="POST">
-						<div class="form-group">
-							<label for="first_name">First Name:</label>
-							<input type="text" class="form-inline" id="first_name">
-						</div>
-						<div class="form-group">
-							<label for="last_name">Last Name:</label>
-							<input type="text" class="form-inline" id="last_name">
-						</div>
-						<div class="form-group">
-							<label for="bday">Date of Birth:</label>
-							<input type="date" class="form-inline" id="bday">
-						</div>
-						<div class="form-group form-inline">
-							<label for="gender">Gender:</label>
-							<select name="gender">
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-								<option value="other">Other</option>
-							</select>
-						</div>
-						<div class="form-group">
-						    <label for="usrtel">Telephone:</label>
-						    <input type="tel" class="form-inline" id="usrtel">
-						</div>
-						<div class="form-group">
-						    <label for="usrtel">Additional Comments:</label>
-						    <textarea class="form-control" id="comments"></textarea>
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>	
-		  		</div>  			
-  		</div>
-  		<div class="col-sm-4"></div>
-  	</div>
-
-
-
-
+		    <br>
+		<% } %>
+	    
+	    <div class="mui--text-dark-secondary mui--text-body2">
+	    	<h1>Add a New Patient</h1>
+	    </div>
+	    <div class="mui-divider"></div>
+	    <br>
+		    <form action="/form" method="POST">
+				<div class="mui-textfield">
+					<label for="first_name">First Name:</label>
+					<input type="text" name="first_name" required>
+				</div>
+				<div class="mui-textfield">
+					<label for="last_name">Last Name:</label>
+					<input type="text" name="last_name" required>
+				</div>
+				<div class="mui-textfield">
+					<label for="bday">Date of Birth:</label>
+					<input type="date" name="bday" required>
+				</div>
+				<div class="mui-textfield">
+					<label for="gender">Gender:</label>
+					<select name="gender">
+						<option name="male">Male</option>
+						<option name="female">Female</option>
+						<option name="other">Other</option>
+					</select>
+				</div>
+				<div class="mui-textfield">
+				    <label for="usrtel">Telephone:</label>
+				    <input type="tel" name="usrtel" required>
+				</div>
+				<div class="mui-textfield">
+				    <label for="usrtel">Additional Comments:</label>
+				    <textarea name="comments"></textarea>
+				</div>
+				<button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+			</form>
+	    <br>
+	  </div>
+	</div>
+	</div>
 </body>
 </html>
