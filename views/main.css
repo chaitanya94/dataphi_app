@@ -1,0 +1,73 @@
+.mui-textfield>label{
+		 	font-size: 14px;
+ }
+
+.sidebar-listing{
+ 	font-size:16px;
+}
+
+.search-form{
+	width:400px; 
+	float:right
+}
+
+.patient-listing{
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+.mui--text-headline{
+ 	font-size: 16px;
+}
+
+a{
+	color: white;
+	font-size: 16px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html,
+body,
+input,
+textarea,
+buttons {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  background-color: white;
+}
+
+#sidebar {
+  background-color: #2196f3;
+  padding: 15px;
+}
+
+@media (min-width: 768px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 180px;
+    height: 100%;
+    padding-top: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  #content {
+    margin-left: 180px;
+  }
+
+  a:visited { text-decoration: none; }
+  a:hover { text-decoration: none; }
+  a:focus { text-decoration: none;}
+  a:hover, a:active { text-decoration: none;}
+}
+
+.fa{
+	margin-right: 5px;
+}

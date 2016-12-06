@@ -4,109 +4,47 @@
   <meta charset="UTF-8">
 
 	<!-- load MUI -->
+	 <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.muicss.com/mui-0.9.6/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-0.9.6/js/mui.min.js"></script>
 
-    <style type="text/css">
-    	/**
-		 * Body CSS
-		 */
-		a {
-			color: black;
-		}
-
-		html,
-		body {
-		  height: 100%;
-		}
-
-		html,
-		body,
-		input,
-		textarea,
-		buttons {
-		  -webkit-font-smoothing: antialiased;
-		  -moz-osx-font-smoothing: grayscale;
-		  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-		  background-color: #F3E5F5;
-		}
-
-
-		/**
-		 * Sidebar CSS
-		 */
-		#sidebar {
-		  background-color: #CE93D8;
-		  padding: 15px;
-		}
-
-		@media (min-width: 768px) {
-		  #sidebar {
-		    position: fixed;
-		    top: 0;
-		    bottom: 0;
-		    width: 180px;
-		    height: 100%;
-		    padding-top: 30px;
-		  }
-		}
-
-		/**
-		 * Content CSS
-		 */
-		@media (min-width: 768px) {
-		  #content {
-		    margin-left: 180px;
-		  }
-
-		  a:visited { text-decoration: none; }
-		  a:hover { text-decoration: none; }
-		  a:focus { text-decoration: none;}
-		  a:hover, a:active { text-decoration: none;}
-		}
-    </style>
-  
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
   <title>Dataphi</title>
 </head>
 <body>
 	<div id="sidebar">
 	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
-	  	<a href="/">Add Patient</a>
-	  	<br>
-	  	<br>
+	  	<a href="/"><i class="fa fa-plus"></i> Add Patient</a>
 	  </div>
 	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
-	  	<a href="/list">Patients' Roster</a>
+	  	<a href="/list"><i class="fa fa-users"></i>Patients' Roster</a>
 	  </div>
 	</div>
 	<div id="content" class="mui-container-fluid">
 	  <div class="mui-row">
 		  <div class="mui-col-sm-10 mui-col-sm-offset-1">
-		    <br>
-		    <br>
 		    <div class="mui--text-dark-secondary mui--text-body2"></div>
-		    <br>
-			    <form action="/search" method="POST">
+			    <form action="/search" method="POST" class="search-form mui-form--inline">
 			    	<div class="mui-textfield">
-			    		<label for="patient_search"><strong>Search Patients:</strong></label>
-			    		<input type="search" class="form-inline" name="patient_search">
+			    		<input type="text" class="form-inline" name="patient_search" >
+			    		
 			    	</div>
-				  	<button type="submit" class="mui-btn mui-btn--raised" >Search</button>
+				  	<button type="submit" class="mui-btn mui-btn--raised mui-btn--primary" >Search</button>
 			  	</form>
 		    
-		    <div class="mui--text-dark-secondary mui--text-body2"><h2>Patients</h2></div>
+		    <div class="mui--text-dark-secondary mui--text-body2"><h1>Patients</h1></div>
 		    <div class="mui-divider"></div>
 		    	
-		    <br>
-		    	<% for(var i=0; i<patients.length; i++) {%>
+		    
+	    	<% for(var i=0; i<patients.length; i++) {%>
+		    	<div class="patient-listing mui-panel">
 		    		<div class="mui--text-headline"><%= patients[i].first_name + " " + patients[i].last_name %></div>
 		    		<div class="mui--text-dark-secondary"><%= patients[i].gender %></div>
 		    		<div class="mui--text-dark-secondary"><%= patients[i].bday %></div>
 		    		<div class="mui--text-dark-secondary"><%= patients[i].usrtel %></div>
 		    		<div class="mui--text-dark-secondary"><%= patients[i].comments %></div>
-		    		<br>
-		    		<br>
-		    	<% } %>
+		    	</div>
+		    <% } %>
 		  </div>
 		</div>
 	</div>

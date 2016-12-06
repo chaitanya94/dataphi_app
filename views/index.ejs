@@ -4,100 +4,41 @@
   <meta charset="UTF-8">
 
 	<!-- load MUI -->
+	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.muicss.com/mui-0.9.6/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-0.9.6/js/mui.min.js"></script>
 
-    <style type="text/css">
-    	/**
-		 * Body CSS
-		 */
-		a {
-			color: black;
-		}
-
-		html,
-		body {
-		  height: 100%;
-		}
-
-		html,
-		body,
-		input,
-		textarea,
-		buttons {
-		  -webkit-font-smoothing: antialiased;
-		  -moz-osx-font-smoothing: grayscale;
-		  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
-		  background-color: #F3E5F5;
-		}
-
-
-		/**
-		 * Sidebar CSS
-		 */
-		#sidebar {
-		  background-color: #CE93D8;
-		  padding: 15px;
-		}
-
-		@media (min-width: 768px) {
-		  #sidebar {
-		    position: fixed;
-		    top: 0;
-		    bottom: 0;
-		    width: 180px;
-		    height: 100%;
-		    padding-top: 30px;
-		  }
-		}
-
-		/**
-		 * Content CSS
-		 */
-		@media (min-width: 768px) {
-		  #content {
-		    margin-left: 180px;
-		  }
-
-		  a:visited { text-decoration: none; }
-		  a:hover { text-decoration: none; }
-		  a:focus { text-decoration: none;}
-		  a:hover, a:active { text-decoration: none;}
-		}
-    </style>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
 
   <title>Dataphi</title>
 </head>
 <body>
 	<div id="sidebar">
 	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
-	  	<a href="/">Add Patient</a>
-	  	<br>
-	  	<br>
+	  	<a href="/"><i class="fa fa-plus"></i> Add Patient</a>
 	  </div>
 	  <div class="mui--text-light mui--text-display1 mui--align-vertical">
-	  	<a href="/list">Patients' Roster</a>
+	  	<a href="/list"><i class="fa fa-users"></i>Patients' Roster</a>
 	  </div>
 	</div>
 
 	<div id="content" class="mui-container-fluid">
 	  <div class="mui-row">
 	  <div class="mui-col-sm-10 mui-col-sm-offset-1">
-	    <br>
 	    <% if(errors.length > 0) {%>
 		<div class="row">
 		    <div class="mui--text-dark-secondary mui--text-body2">Error</div>
 		    <div class="mui-divider"></div>
-		    <br>
+		    
 				<ul class="alert alert-danger">
 			  		<% for(var i=0; i<errors.length; i++) {%>
 			  			<span><%= errors[i] %></span>
 			  			<% if(i != errors.length - 1) {%>
-			  				<br>
+			  				
 			  			<% } %>
 			  		<% } %>
 			  	</ul>	
-		    <br>
+		    
 		<% } %>
 	    
 	    <div class="mui--text-dark-secondary mui--text-body2">
@@ -107,36 +48,37 @@
 	    <br>
 		    <form action="/form" method="POST">
 				<div class="mui-textfield">
-					<label for="first_name">First Name:</label>
+					<label for="first_name">First Name</label>
 					<input type="text" name="first_name" required>
 				</div>
 				<div class="mui-textfield">
-					<label for="last_name">Last Name:</label>
+					<label for="last_name">Last Name</label>
 					<input type="text" name="last_name" required>
 				</div>
 				<div class="mui-textfield">
-					<label for="bday">Date of Birth:</label>
+					<label for="bday">Date of Birth</label>
 					<input type="date" name="bday" required>
 				</div>
 				<div class="mui-textfield">
-					<label for="gender">Gender:</label>
+					<label for="gender">Gender</label>
 					<select name="gender">
 						<option name="male">Male</option>
 						<option name="female">Female</option>
 						<option name="other">Other</option>
 					</select>
 				</div>
+			
 				<div class="mui-textfield">
-				    <label for="usrtel">Telephone:</label>
+				    <label for="usrtel">Telephone</label>
 				    <input type="tel" name="usrtel" required>
 				</div>
 				<div class="mui-textfield">
-				    <label for="usrtel">Additional Comments:</label>
+				    <label for="usrtel">Additional Comments</label>
 				    <textarea name="comments"></textarea>
 				</div>
-				<button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+				<button type="submit" class="mui-btn mui-btn--raised mui-btn--primary">Submit</button>
 			</form>
-	    <br>
+	    
 	  </div>
 	</div>
 	</div>
